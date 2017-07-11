@@ -7,7 +7,7 @@
 	<!--
     <property name="bukkit.plugins.dir" value="C:\Users\Kyne\Desktop\Minecraft\plugins" />
 	<property name="rtk.modules.dir" value="C:\Users\Kyne\Desktop\Minecraft\toolkit\modules" />
-	<property name="last.bukkit.url" value="http://dl.bukkit.org/latest-rb/bukkit.jar" />
+	<property name="last.bukkit.url" value="C:\Users\Zachary\Desktop\BuildTools" />
 	
 	<target name="getBukkit">
 		<get dest="${lib.dir}" src="${last.bukkit.url}" verbose="true" />
@@ -51,16 +51,16 @@
 				<include name="com/drdanick/**/*.class" />
 				<include name="module.txt" />
 			</fileset>
-			<zipfileset src="${lib.dir}/yamlbeans-1.09.jar">
+			<zipfileset src="${lib.dir}/yamlbeans-1.12.jar">
 				<include name="**/*.class" />
 			</zipfileset>
-			<zipfileset src="${lib.dir}/bukkit.jar">
+			<zipfileset src="${lib.dir}/spigot-1.12.jar">
 				<include name="org/json/simple/**/*.class" />
 			</zipfileset>
 			<zipfileset src="${lib.dir}/commons-io-2.5.jar">
 				<include name="**/*.class" />
 			</zipfileset>
-			<zipfileset src="${lib.dir}/commons-lang3-3.4.jar">
+			<zipfileset src="${lib.dir}/commons-lang3-3.6.jar">
 				<include name="**/*.class" />
 			</zipfileset>
 		</jar>
