@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.kyne.webby</groupId>
+	<artifactId>RTKWebby</artifactId> <!-- Switch between BukkitWebby and RTKWebby depending on which component you want to make -->
+	<!-- If building BukkitWebby.jar, make sure the dependency block below is commented out and only include
+	com/kyne/webby/bukkit and com/kyne/webby/commons as the source folders via an exclusion filter on src. If building
+	RTKWebby, only include com/kyne/webby/commons, com/kyne/webby/rtk, and com/drdanick/McRKit/api this way.
+	
+	The reason for this is that while Maven is more convenient as far as dependency management goes, it can't compile
+	separate jars easily with only one pom.xml file, and I've not figured out a better way to automate it
+	-->
+	<version>1.2.0</version>
+	<packaging>jar</packaging>
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>src/com/kyne/webby</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<exclude>**/*.java</exclude>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<!-- but be sure to exclude the source from the final jar file -->
+					<excludes>
+						<exclude>**/*.java</exclude>
+						<exclude>src/com/kyne/webby/bukkit</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<spigot.version>1.12-R0.1-SNAPSHOT</spigot.version>
+		<spigot.groupId>org.spigotmc</spigot.groupId>       <!-- To switch between Bukkit & Spigot -->
+		<spigot.artifactId>spigot-api</spigot.artifactId>   <!-- To switch between Bukkit & Spigot -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<repositories>
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<!--Spigot API-->
+		<dependency>
+			<groupId>${spigot.groupId}</groupId>
+			<artifactId>${spigot.artifactId}</artifactId>
+			<version>${spigot.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>${spigot.groupId}</groupId>
+			<artifactId>${spigot.artifactId}</artifactId>
+			<version>${spigot.version}</version>
+			<classifier>javadoc</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${spigot.groupId}</groupId>
+			<artifactId>${spigot.artifactId}</artifactId>
+			<version>${spigot.version}</version>
+			<classifier>sources</classifier>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.esotericsoftware.yamlbeans/yamlbeans -->
+		<dependency>
+			<groupId>com.esotericsoftware.yamlbeans</groupId>
+			<artifactId>yamlbeans</artifactId>
+			<version>1.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.drdanick</groupId>
+			<artifactId>Minecraft_RKit</artifactId>
+			<version>10.15.3</version>
+		</dependency>
+	</dependencies>
+</project>
